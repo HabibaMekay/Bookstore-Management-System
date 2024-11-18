@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor Cashier
+
+rectangle "System" {
+    usecase "Login" as UC1
+    usecase "Process Book Sale" as UC2
+    usecase "Handle a Book Return" as UC3
+    usecase "View Sales History" as UC4
+    usecase "View Book Details" as UC5
+     usecase "Log out" as UC6
+}
+
+Cashier --> UC1
+Cashier --> UC2
+Cashier --> UC3
+Cashier --> UC4
+Cashier --> UC5
+Cashier --> UC6
+
+UC2 <|-- UC1
+UC3 <|-- UC1
+UC4 <|-- UC1
+UC5 <|-- UC1
+UC6 <|-- UC1
+@enduml

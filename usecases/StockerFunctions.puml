@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor Stocker
+
+rectangle "System" {
+    usecase "Login" as UC1
+    usecase "Add New Book" as UC2
+    usecase "Remove Book" as UC3
+    usecase "View Book Details" as UC4
+    usecase "Log out" as UC5
+}
+
+Stocker --> UC1
+Stocker --> UC2
+Stocker --> UC3
+Stocker --> UC4
+Stocker --> UC5
+
+UC2 <|-- UC1
+UC3 <|-- UC1
+UC4 <|-- UC1
+UC5 <|-- UC1
+@enduml
