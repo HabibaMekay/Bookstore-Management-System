@@ -5,46 +5,50 @@ class Library #LightGray{
 }
 
 class Users #LightPink{
-UserName
-Password
+name
+password
 Role
 
 
 }
 
 class Cashier #LightPink{
-CashierID
+CashierId
 
 }
 
 class Stocker #LightPink{
-StockerID
+StockerId
 }
 
 class Admin #LightPink{
-AdminID
+AdminId
 }
 
 class Book #LightBlue  {
-Code
+int serialNum
 }
 
 class BookDescription #LightBlue   {
 Title
 Genre
 CurrntStock
+BorrowedCount
 PurchasedCount
 }
 
 class Transcation #LightCyan{
-TransactionID
-CashierID
-BookCode
+transactionId
+userId
+bookSerialNum
+TranscationType
 Date
-BookList
 }
 
 class Purchase #LightCyan{
+}
+
+class Borrow #LightCyan {
 }
 
 class Customer #LightGray{
@@ -70,11 +74,15 @@ Stocker"*" -- "1" Library #blue : "Member-of"
 Customer"*" -- "1*" Cashier #orange: "Communicates-with "
 Book"*" -- "1" Library#red: "Owned-by"
 Transcation"1" -- "1" Purchase : "Type-of"
-
+Transcation"1" -- "1" Borrow: "Type-of"
 
 skinparam class {
 FontName Times New Roman
 FontSize 15
+
+
+
+
  }
 
 

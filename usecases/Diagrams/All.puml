@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor Admin #Thistle
+actor Stocker #Moccasin
+actor Cashier #Motivation
+
+rectangle "System" #LightBlue {
+
+'Common UC
+        'All
+    usecase "Login" as UC1 #MediumAquaMarine
+    usecase "Log out" as UC2 #Moccasin
+    usecase "View Book Details" as UC3 #Moccasin
+        'cashier and admin
+    usecase "View Sales History" as UC4 #Moccasin
+
+'Admin
+
+    usecase "Add New User" as UC5 #Thistle
+    usecase "Remove User" as UC6 #Thistle
+
+'Stocker
+
+    usecase "Add New Book" as UC8 #Pink
+    usecase "Remove Book" as UC9 #Pink
+
+
+'Cashier
+
+    usecase "Process Book Sale" as UC10 #Motivation
+    usecase "Handle a Book Return" as UC11  #Motivation
+}
+
+Admin --> UC1 #Indigo
+Admin --> UC2 #Indigo
+Admin --> UC3 #Indigo
+Admin --> UC4 #Indigo
+Admin --> UC5 #Indigo
+Admin --> UC6 #Indigo
+
+Cashier --> UC1 #Navy
+Cashier --> UC2 #Navy
+Cashier --> UC3 #Navy
+Cashier --> UC4 #Navy
+Cashier --> UC10 #Navy
+Cashier --> UC11 #Navy
+
+Stocker --> UC1 #DarkGreen
+Stocker --> UC2 #DarkGreen
+Stocker --> UC3 #DarkGreen
+Stocker --> UC4 #DarkGreen
+Stocker --> UC8 #DarkGreen
+Stocker --> UC9 #DarkGreen
+
+UC2  <|-- UC1 #SeaGreen
+UC3 <|-- UC1 #SeaGreen
+UC4 <|-- UC1 #SeaGreen
+UC5 <|-- UC1 #SeaGreen
+UC6 <|-- UC1 #SeaGreen
+UC8 <|-- UC1 #SeaGreen
+UC9 <|-- UC1 #SeaGreen
+UC10 <|-- UC1 #SeaGreen
+UC11 <|-- UC1 #SeaGreen
+
+@enduml
