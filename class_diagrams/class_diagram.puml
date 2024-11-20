@@ -1,6 +1,6 @@
 @startuml
 
-class Library #LightGray{
+class BookStore #LightGray{
 
 }
 
@@ -47,6 +47,8 @@ BookList
 class Purchase #LightCyan{
 }
 
+class Return #LightCyan{
+}
 class Customer #LightGray{
 
 }
@@ -64,11 +66,12 @@ Cashier "1" -- "*" Transcation #orange: "Performs"
 Admin "1" -- "*" Book #green: "view"
 Cashier"1" -- "*" Book #orange: "view""
 Book "*" -- "1" BookDescription #red: "Describes"
-Cashier"*" -- "1" Library #orange: "Member-of"
-Stocker"*" -- "1" Library #blue : "Member-of"
+Cashier"*" -- "1" BookStore #orange: "Member-of"
+Stocker"*" -- "1" BookStore #blue : "Member-of"
 Customer"*" -- "1*" Cashier #orange: "Communicates-with "
-Book"*" -- "1" Library#red: "Owned-by"
+Book"*" -- "1" BookStore#red: "Owned-by"
 Transcation"1" -- "1" Purchase : "Type-of"
+Transcation"1" -- "1" Return : "Type-of"
 
 
 skinparam class {
