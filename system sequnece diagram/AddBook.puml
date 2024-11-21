@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Stocker -> System: Start add book request
+System --> Stocker: Ask for book details
+
+Stocker -> System: Insert book details
+System --> Stocker: send success message
+
+@enduml

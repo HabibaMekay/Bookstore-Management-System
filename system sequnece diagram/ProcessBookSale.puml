@@ -1,0 +1,14 @@
+@startuml
+'autonumber
+
+Cashier -> System: Start book sale request
+System --> Cashier: Ask for book entry
+
+loop on all books to purchase
+    Cashier -> System: Enter book details
+    System --> Cashier: Confirm book entry
+end
+
+System -> Cashier: Show total and finalize sale
+
+@enduml
