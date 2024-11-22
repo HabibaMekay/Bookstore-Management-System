@@ -7,7 +7,7 @@ Viewing book details such as title, price, genre, etc. on the system by entering
 Cashier, Admin, Stockers
 
 ### **Pre-conditions**: 
-user is authenticated and authorized
+User is authenticated and authorized
 
 ### **Main Flow:**
     1. User enters the book name in the book search on the system 

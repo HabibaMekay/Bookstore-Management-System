@@ -1,74 +1,82 @@
 @startuml
 
 class BookStore #LightGray{
-
 }
 
 class Users #LightPink{
-UserName
-Password
-Role
+-UserName: String
+-Password: String
+-Role: String
 
-
++login(): boolean
++logout(): void
 }
 
 class Cashier #LightPink{
-CashierID
-
+-CashierID: int
++processTransaction(Transaction t): void
++viewBookDetails(Book book): BookDescription
 }
 
 class Stocker #LightPink{
-StockerID
+-StockerID: int
++updateStock(Book book, int quantity): void
++viewBookDetails(Book book): BookDescription
 }
 
 class Admin #LightPink{
-AdminID
+-AdminID: int
++addUser(Users user): void
++removeUser(int userID): void
++viewReports(): void
 }
 
 class Book #LightBlue  {
-Code
++getBookDetails(): BookDescription
 }
 
 class BookDescription #LightBlue   {
-Title
-Genre
-CurrntStock
-PurchasedCount
+-Title: String
+-Genre: String
+-CurrentStock: int
+-PurchasedCount: int
 }
 
 class Transcation #LightCyan{
-TransactionID
-CashierID
-BookCode
-Date
-BookList
+-TransactionID: int
+-CashierID: int
+-BookCode: int
+-Date: Date
+-BookList: List<Book>
++process(): void
 }
 
 class Purchase #LightCyan{
+ +processPurchase(): void
 }
 
 class Return #LightCyan{
++processReturn(): void
 }
 class Customer #LightGray{
-
 }
 
 
 
-Users "1" -- "1" Cashier #pink
-Users "1" -- "*" Stocker #pink
-Users "1" -- "1" Admin  #pink
+Users "1" -- "1...*" Cashier #pink:"has-a"
+Users "1" -- "1...*" Stocker #pink:"has-a"
+Users "1" -- "1" Admin  #pink:"has-an"
 
-Stocker "1" -- "*" Book #blue:"Updates-stock"
-Admin "1" -- "*" Cashier #green : "Add-or-remove"
-Admin "1" -- "*" Stocker #green: "Add-or-remove"
-Cashier "1" -- "*" Transcation #orange: "Performs"
+Stocker "1" -- "1...*" Book #blue:"Updates-stock"
+Admin "1" -- "1...*" Cashier #green : "Add-or-remove"
+Admin "1" -- "1...*" Stocker #green: "Add-or-remove"
+Cashier "1" -- "1...*" Transcation #orange: "Performs"
 Admin "1" -- "*" Book #green: "view"
 Cashier"1" -- "*" Book #orange: "view""
 Book "1" -- "1" BookDescription #red: "Describes"
-Cashier"*" -- "1" BookStore #orange: "Member-of"
-Stocker"*" -- "1" BookStore #blue : "Member-of"
-Customer"*" -- "1*" Cashier #orange: "Communicates-with "
+Cashier"1...*" -- "1" BookStore #orange: "Member-of"
+Stocker"1...*" -- "1" BookStore #blue : "Member-of"
+Customer"1...*" -- "1...*" Cashier #orange: "Communicates-with "
 Book"*" -- "1" BookStore#red: "Owned-by"
 Transcation"1" -- "1" Purchase : "Type-of"
 Transcation"1" -- "1" Return : "Type-of"

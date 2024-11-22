@@ -6,7 +6,7 @@ User views sales history with its date and details
 ### **Actor(s):**
 Cashier, Admin
 
-### **re-conditions:**
+### **Pre-conditions:**
 User is authenticated and authorized
 
 ### **Main Flow:**

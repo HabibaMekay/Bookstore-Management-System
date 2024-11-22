@@ -2,6 +2,7 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+
 Admin -> System: Initialize remove user
 System --> Admin: prompt for user details
 Admin -> System: Inserts the user details

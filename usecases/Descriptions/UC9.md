@@ -1,7 +1,7 @@
 ### **Title:** Remove Book
 
 ### **Description:**
-a book will be removed from the system
+A book will be removed from the system
 
 ### **Actor(s):**
 Stocker
@@ -23,4 +23,4 @@ user is authenticated and authorized
     3.1.2 User is prompted to re-enter search or exit
 
 ### **Post-conditions:**
-a book is removed from the system
+A book is removed from the system
