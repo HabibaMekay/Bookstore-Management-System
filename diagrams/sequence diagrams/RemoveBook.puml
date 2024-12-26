@@ -1,0 +1,18 @@
+@startuml
+autonumber
+
+Stocker -> System: viewBooks()
+System -> BookList: viewBooks()
+alt Books exist
+BookList --> System: list<Book> viewBooks
+System --> User: preview books list
+Stocker -> System: selects book
+System --> Stocker: shows book
+Stocker -> System: selects delete
+System -> BookList: deleteBook(
+
+else BookList is empty
+
+end
+
+@enduml
