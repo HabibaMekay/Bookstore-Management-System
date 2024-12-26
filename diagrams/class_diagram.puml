@@ -1,50 +1,50 @@
 @startuml
 
 abstract class User #LightPink{
--UserName: String
--Password: String
--Role: String
+-userName: String
+-password: String
+-role: String
+-id: int
 
 +login(): boolean
 +logout(): void
 }
 
 class Cashier #LightPink{
--CashierID: int
-+processTransaction(Transaction t): void
++scanBook(int id: void)
++processTransaction(): Transcation
 +viewBookDetails(Book book): BookDescription
 }
 
 class Stocker #LightPink{
--StockerID: int
 +updateStock(Book book, int quantity): void
 +viewBookDetails(Book book): BookDescription
 }
 
 class Admin #LightPink{
--AdminID: int
 +addUser(Users user): void
 +removeUser(int userID): void
 +viewReports(): void
 }
 
-class Book #LightBlue  {
-+getBookDetails(): BookDescription
+class BookList #LightBlue  {
+-List<Book> books
++search(String name): Book
++getBookByID(int bookID): Book
 }
 
-class BookDescription #LightBlue   {
--Title: String
--Genre: String
--CurrentStock: int
--PurchasedCount: int
+class Book #LightBlue   {
+-title: String
+-genre: String
+-currentStock: int
+-id: int
 }
 
 class Transcation #LightCyan{
--TransactionID: int
--CashierID: int
--BookCode: int
--Date: Date
--BookList: List<Book>
+-transactionID: int
+-cashierID: int
+-date: Date
+-bookList: List<Book>
 +process(): void
 }
 
@@ -67,7 +67,8 @@ Admin "1" -- "1...*" Stocker #green: "Add-or-remove"
 Cashier "1" -- "*" Transcation #orange: "Performs"
 Admin "1" -- "*" Book #green: "view"
 Cashier"1" -- "*" Book #orange: "view""
-Book "1" -- "1" BookDescription #red: "Describes"
+BookList "1" -- "*" Book #red: "Contains"
+Transcation "1" -- "*" Book #red: "Contains"
 Transcation"1" -- "1" Purchase : "Type-of"
 Transcation"1" -- "1" Return : "Type-of"
 
@@ -77,11 +78,113 @@ FontName Times New Roman
 FontSize 15
  }
 
-
-
-
 @enduml
 
 
 
 
+=======================================================================
+=======================================================================
+
+
+Note: suggested changes
+Book bceomes BookList (has book list, search etc)
+Book details becomes just book
+remove bookcode from transaction
+why does bookdescription have purchasedcount?
+if each user type has their id in the class then put in user
+are the relations even correct? isnt it like is-a has-a, etc?
+
+
+
+fixes:
+add patameters to funcs
+relation from user and types is is a not has an
+add Book is part of Transcation
+Cahsier process transaction returns one not takes one as parameter
+
+
+
+
+==========================================================================
+==========================================================================
+
+old...
+
+
+'abstract class User #LightPink{
+'-UserName: String
+'-Password: String
+'-Role: String
+'
+'+login(): boolean
+'+logout(): void
+'}
+'
+'class Cashier #LightPink{
+'-CashierID: int
+'+processTransaction(Transaction t): void
+'+viewBookDetails(Book book): BookDescription
+'}
+'
+'class Stocker #LightPink{
+'-StockerID: int
+'+updateStock(Book book, int quantity): void
+'+viewBookDetails(Book book): BookDescription
+'}
+'
+'class Admin #LightPink{
+'-AdminID: int
+'+addUser(Users user): void
+'+removeUser(int userID): void
+'+viewReports(): void
+'}
+'
+'class Book #LightBlue  {
+'+getBookDetails(): BookDescription
+'}
+'
+'class BookDescription #LightBlue   {
+'-Title: String
+'-Genre: String
+'-CurrentStock: int
+'-PurchasedCount: int
+'}
+'
+'class Transcation #LightCyan{
+'-TransactionID: int
+'-CashierID: int
+'-BookCode: int
+'-Date: Date
+'-BookList: List<Book>
+'+process(): void
+'}
+'
+'class Purchase #LightCyan{
+' +processPurchase(): void
+'}
+'
+'class Return #LightCyan{
+'+processReturn(): void
+'}
+'
+'
+'User "1" -- "1...*" Cashier #pink:"has-a"
+'User "1" -- "1...*" Stocker #pink:"has-a"
+'User "1" -- "1" Admin  #pink:"has-an"
+'
+'Stocker "1" -- "*" Book #blue:"Updates-stock"
+'Admin "1" -- "1...*" Cashier #green : "Add-or-remove"
+'Admin "1" -- "1...*" Stocker #green: "Add-or-remove"
+'Cashier "1" -- "*" Transcation #orange: "Performs"
+'Admin "1" -- "*" Book #green: "view"
+'Cashier"1" -- "*" Book #orange: "view""
+'Book "1" -- "1" BookDescription #red: "Describes"
+'Transcation"1" -- "1" Purchase : "Type-of"
+'Transcation"1" -- "1" Return : "Type-of"
+'
+'
+'skinparam class {
+'FontName Times New Roman
+'FontSize 15
+' }

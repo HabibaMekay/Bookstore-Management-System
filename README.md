@@ -7,3 +7,5 @@ Velvet Spices is a bookstore management system that allows users to track and up
 
 
 Our Team: Habiba Mekay, Maya Tarek, Rawan Wagih
+
+Document link: https://docs.google.com/document/d/1ZobyWeXrJtOLng4-a0N8fiUtrrfGWGB8r7P4Prjld0I/edit?usp=sharing
