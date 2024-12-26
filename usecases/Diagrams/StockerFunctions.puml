@@ -19,8 +19,8 @@ Stocker --> UC3
 Stocker --> UC4
 Stocker --> UC5
 
-UC2 <|-- UC1
-UC3 <|-- UC1
-UC4 <|-- UC1
-UC5 <|-- UC1
+UC2 --|> UC1
+UC3 --|> UC1
+UC4 --|> UC1
+UC5 --|>  UC1
 @enduml

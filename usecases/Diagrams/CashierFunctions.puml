@@ -21,9 +21,9 @@ Cashier --> UC4
 Cashier --> UC5
 Cashier --> UC6
 
-UC2 <|-- UC1
-UC3 <|-- UC1
-UC4 <|-- UC1
-UC5 <|-- UC1
-UC6 <|-- UC1
+UC2 --|> UC1
+UC3 --|> UC1
+UC4 --|> UC1
+UC5 --|> UC1
+UC6 --|> UC1
 @enduml

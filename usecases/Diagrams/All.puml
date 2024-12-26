@@ -55,14 +55,14 @@ Stocker --> UC4 #DarkGreen
 Stocker --> UC8 #DarkGreen
 Stocker --> UC9 #DarkGreen
 
-UC2  <|-- UC1 #SeaGreen
-UC3 <|-- UC1 #SeaGreen
-UC4 <|-- UC1 #SeaGreen
-UC5 <|-- UC1 #SeaGreen
-UC6 <|-- UC1 #SeaGreen
-UC8 <|-- UC1 #SeaGreen
-UC9 <|-- UC1 #SeaGreen
-UC10 <|-- UC1 #SeaGreen
-UC11 <|-- UC1 #SeaGreen
+UC2  --|> UC1 #SeaGreen
+UC3 --|> UC1 #SeaGreen
+UC4 --|> UC1 #SeaGreen
+UC5 --|> UC1 #SeaGreen
+UC6 --|> UC1 #SeaGreen
+UC8 --|> UC1 #SeaGreen
+UC9 --|> UC1 #SeaGreen
+UC10 --|> UC1 #SeaGreen
+UC11 --|> UC1 #SeaGreen
 
 @enduml
