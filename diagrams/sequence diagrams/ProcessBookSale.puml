@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Cashier -> System: startSale()
+
+System-> Transaction **: startSale()
+Transaction --> System: confirm
+System --> Cashier: confirmation message
+loop books to buy
+Cashier -> System: addBook(int id)
+System -> Book **: create(int id)
+
+end
+
+@enduml
