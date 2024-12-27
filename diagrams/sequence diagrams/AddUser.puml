@@ -1,0 +1,17 @@
+@startuml
+autonumber
+
+Admin -> System: viewUsers()
+System -> UserList: viewUsers()
+
+UserList --> System: list<User> users
+System --> Admin: preview users list
+Admin -> System: selects add user
+System --> Admin: request info
+Admin -> System: enter info
+System -> User**: create
+System -> UserList: addUser(User user)
+UserList --> System: success message
+System --> Admin: success
+
+@enduml

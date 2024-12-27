@@ -5,13 +5,25 @@ autonumber
 
 Cashier -> System: startSale()
 
-System-> Transaction **: startSale()
-Transaction --> System: confirm
+System-> Purchase **: startSale()
+Purchase --> System: confirm
 System --> Cashier: confirmation message
 loop books to buy
 Cashier -> System: addBook(int id)
+System -> BookList: purchaseBook(int id)
+BookList --> System: confirmation message
 System -> Book **: create(int id)
-
+Book --> System: confirmation message
+System -> Purchase: addBook(Book book)
+Purchase --> System: confirmation message
+System -> Purchase: calculateTotal()
+Purchase --> System: double total
+System --> Cashier: show total
 end
+Cashier -> System: end transaction
+System -> Purchase: processPurchase()
+Purchase --> System: success message
+System -> Purchase !!: delete
+System --> Cashier: show success
 
 @enduml

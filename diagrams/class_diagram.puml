@@ -11,7 +11,7 @@ abstract class User #LightPink{
 }
 
 class Cashier #LightPink{
-+scanBook(int id: void)
++scanBook(int id): void
 +processTransaction(): Transcation
 +viewBookDetails(Book book): BookDescription
 }
@@ -27,10 +27,23 @@ class Admin #LightPink{
 +viewReports(): void
 }
 
+class UserList #Pink  {
+-List<User> users
++viewUsers(): List<User>
++search(String name): User
++getUserByID(int userID): User
++addUser(User user): void
++deleteUser(User user): void
+}
+
 class BookList #LightBlue  {
 -List<Book> books
++isEmpty(): boolean
++viewBooks(): List<Book>
 +search(String name): Book
 +getBookByID(int bookID): Book
++addBook(Book book): void
++deleteBook(Book book): void
 }
 
 class Book #LightBlue   {
@@ -46,6 +59,8 @@ class Transcation #LightCyan{
 -date: Date
 -bookList: List<Book>
 +process(): void
++calculateTotal(): double
++addBook(Book book)
 }
 
 class Purchase #LightCyan{
@@ -57,18 +72,20 @@ class Return #LightCyan{
 }
 
 
-User "1" -- "1...*" Cashier #pink:"has-a"
-User "1" -- "1...*" Stocker #pink:"has-a"
-User "1" -- "1" Admin  #pink:"has-an"
+Cashier "1...*" -- "1" User #pink:"is a"
+Stocker "1...*" -- "1" User #pink:"is a"
+Admin "1...*" -- "1" User  #pink:"is an"
+UserList "1" -- "1...*" User #pink:"Contains"
 
-Stocker "1" -- "*" Book #blue:"Updates-stock"
+Stocker "1" -- "*" BookList #blue:"Updates-stock"
 Admin "1" -- "1...*" Cashier #green : "Add-or-remove"
 Admin "1" -- "1...*" Stocker #green: "Add-or-remove"
+Admin "1" -- "1" UserList #green: "Updates"
 Cashier "1" -- "*" Transcation #orange: "Performs"
 Admin "1" -- "*" Book #green: "view"
 Cashier"1" -- "*" Book #orange: "view""
 BookList "1" -- "*" Book #red: "Contains"
-Transcation "1" -- "*" Book #red: "Contains"
+Transcation "1" -- "1...*" Book #red: "Contains"
 Transcation"1" -- "1" Purchase : "Type-of"
 Transcation"1" -- "1" Return : "Type-of"
 
@@ -102,7 +119,7 @@ add patameters to funcs
 relation from user and types is is a not has an
 add Book is part of Transcation
 Cahsier process transaction returns one not takes one as parameter
-
+added UserList class
 
 
 
