@@ -11,7 +11,7 @@ abstract class User #LightPink{
 }
 
 class Cashier #LightPink{
-+scanBook(int id): void
++scanBook(int id): id
 +processTransaction(): Transcation
 +viewBookDetails(Book book): BookDescription
 }
@@ -24,7 +24,6 @@ class Stocker #LightPink{
 class Admin #LightPink{
 +addUser(Users user): void
 +removeUser(int userID): void
-+viewReports(): void
 }
 
 class UserList #Pink  {
@@ -39,21 +38,22 @@ class UserList #Pink  {
 class BookList #LightBlue  {
 -List<Book> books
 +isEmpty(): boolean
-+viewBooks(): List<Book>
-+search(String name): Book
-+getBookByID(int bookID): Book
++getBooks(): List<Book>
++searchByName(String name): Book
++searchByID(int bookID): Book
 +addBook(Book book): void
-+deleteBook(Book book): void
++removeBook(Book book): void
 }
 
 class Book #LightBlue   {
 -title: String
+-price: double
 -genre: String
 -currentStock: int
 -id: int
 }
 
-class Transcation #LightCyan{
+abstract class Transcation #LightCyan{
 -transactionID: int
 -cashierID: int
 -date: Date

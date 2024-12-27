@@ -3,7 +3,7 @@
 
 autonumber
 
-Cashier -> System: startSale()
+Cashier -> System: start Sale
 
 System-> Purchase **: startSale()
 Purchase --> System: confirm

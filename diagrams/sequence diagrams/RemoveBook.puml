@@ -1,17 +1,17 @@
 @startuml
 autonumber
 
-Stocker -> System: viewBooks()
+Stocker -> System: view books
 System -> BookList: isEmpty()
 alt Books exist
 BookList --> System: false
-System -> BookList: viewBooks()
+System -> BookList: getBooks()
 BookList --> System: list<Book> books
 System --> Stocker: preview books list
 Stocker -> System: selects book
 System --> Stocker: shows book
 Stocker -> System: selects delete
-System -> BookList: deleteBook(Book book)
+System -> BookList: removeBook(Book book)
 BookList -> Book !!: delete
 BookList --> System: confirmation message
 System --> Stocker: confirms deletion
