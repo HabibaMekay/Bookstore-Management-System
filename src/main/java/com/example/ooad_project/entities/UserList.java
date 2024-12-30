@@ -1,4 +1,4 @@
-//package entities;
-//
-//public class UserList {
-//}
+package com.example.ooad_project.entities;
+
+public class UserList {
+}
