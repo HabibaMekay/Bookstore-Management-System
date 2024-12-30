@@ -1,18 +1,26 @@
-package entities;
+package com.example.ooad_project.entities;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String title;
     private String genre;
     private int currentStock;
-    private int id;
     private double price;
-    public Book(String title, String genre, int currentStock, int id, double price) {
+
+    public Book() {}
+
+    public Book(String title, String genre, int currentStock, double price) {
         this.title = title;
         this.genre = genre;
         this.currentStock = currentStock;
-        this.id = id;
         this.price = price;
     }
+
     public String getTitle() {
         return title;
     }

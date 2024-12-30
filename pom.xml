@@ -11,49 +11,71 @@
     <groupId>com.example</groupId>
     <artifactId>OOAD_project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>OOAD_project</name>
-    <description>OOAD_project</description>
-    <url/>
+    <name>Meow</name>
+    <description>Spring Boot project for Object-Oriented Analysis and Design</description>
+    <url>https://github.com/HabibaMekay/Bookstore-Management-System</url>
     <licenses>
-        <license/>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <id>meow</id>
+            <name>Meow</name>
+            <email>meow@gmail.com</email>
+        </developer>
     </developers>
     <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
+        <connection>scm:git:git://github.com/HabibaMekay/Bookstore-Management-System.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:HabibaMekay/Bookstore-Management-System.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/HabibaMekay/Bookstore-Management-System</url>
     </scm>
     <properties>
         <java.version>17</java.version>
     </properties>
     <dependencies>
+        <!-- Spring Boot Starter for Thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
+        <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot Developer Tools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- H2 Database -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- Spring Boot Starter for Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Boot Starter for JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
     </dependencies>
 
@@ -65,5 +87,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
