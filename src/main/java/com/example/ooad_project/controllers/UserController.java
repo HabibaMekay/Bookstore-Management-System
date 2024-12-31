@@ -6,49 +6,60 @@ import com.example.ooad_project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+import com.example.ooad_project.entities.AppUser;
+import com.example.ooad_project.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+
+
+@Controller
 @RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private UserService userService;
 
+    // Create a new user
     @PostMapping
-    public AppUser createUser(@RequestBody AppUser user) {
-        return userRepository.save(user);
+    public String createUser(@ModelAttribute AppUser user, Model model) {
+        userRepository.save(user);
+        return "redirect:/login"; // Redirect to login page after user is created
     }
 
+    // Get user by ID (used for admin pages or other actions)
     @GetMapping("/{id}")
-    public AppUser getUserById(@PathVariable int id) {
-        return userRepository.findById(id).orElse(null);
+    public String getUserById(@PathVariable int id, Model model) {
+        AppUser user = userRepository.findById(id).orElse(null);
+        model.addAttribute("user", user);
+        return "userDetails"; // Return a page showing user details
     }
 
+    // Update user information
     @PutMapping("/{id}")
-    public AppUser updateUser(@PathVariable int id, @RequestBody AppUser userDetails) {
+    public String updateUser(@PathVariable int id, @ModelAttribute AppUser userDetails, Model model) {
         AppUser user = userRepository.findById(id).orElse(null);
         if (user != null) {
             user.setUsername(userDetails.getUsername());
             user.setPassword(userDetails.getPassword());
-            return userRepository.save(user);
+            userRepository.save(user);
+            model.addAttribute("user", user);
+            return "userDetails"; // Return updated user details page
         }
-        return null;
+        return "error"; // Return error page if user not found
     }
 
+    // Delete user by ID
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable int id) {
+    public String deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
-    }
-
-    // Login functionality
-    @PostMapping("/login")
-    public String login(@RequestBody AppUser loginDetails) {
-        AppUser user = userRepository.findByUsername(loginDetails.getUsername());
-        if (user != null && user.getPassword().equals(loginDetails.getPassword())) {
-            return "Login successful! Welcome, " + user.getUsername();
-        } else {
-            return "Invalid username or password.";
-        }
+        return "redirect:/login"; // Redirect to login page after user is deleted
     }
 }

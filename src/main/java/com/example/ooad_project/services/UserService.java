@@ -22,10 +22,22 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + id));
     }
 
-    public boolean loginUser(String username, String password) {
+    public String loginUser(String username, String password) {
         AppUser user = userRepository.findByUsername(username);
-        return user != null && user.getPassword().equals(password);
+        if (user != null && user.getPassword().equals(password)) {
+            // Redirect or respond based on role
+            switch (user.getRole()) {
+                case "ADMIN":
+                    return "redirect:/admin/dashboard";
+                case "USER":
+                    return "redirect:/user/home";
+                default:
+                    return "redirect:/login";
+            }
+        }
+        return "Invalid username or password.";
     }
+
 
     public void saveUser(AppUser user) {
         userRepository.save(user);
