@@ -1,3 +1,39 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Books</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Books</h1>-->
+<!--<a href="/books/new">Add New Book</a>-->
+<!--<table>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Genre</th>-->
+<!--        <th>Stock</th>-->
+<!--        <th>Price</th>-->
+<!--        <th>Actions</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="book : ${books}">-->
+<!--        <td th:text="${book.title}"></td>-->
+<!--        <td th:text="${book.genre}"></td>-->
+<!--        <td th:text="${book.currentStock}"></td>-->
+<!--        <td th:text="${book.price}"></td>-->
+<!--        <td>-->
+<!--            <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a>-->
+<!--            <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,7 +41,7 @@
 </head>
 <body>
 <h1>Books</h1>
-<a href="/books/new">Add New Book</a>
+<a th:href="@{/books/new}">Add New Book</a>
 <table>
     <thead>
     <tr>
@@ -21,7 +57,7 @@
         <td th:text="${book.title}"></td>
         <td th:text="${book.genre}"></td>
         <td th:text="${book.currentStock}"></td>
-        <td th:text="${book.price}"></td>
+        <td th:text="${book.price} + 'LE'"></td>
         <td>
             <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a>
             <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
