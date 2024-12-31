@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cashier - Manage Transactions</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Manage Transactions</h1>
+
+<h2>Add New Transaction</h2>
+<form th:action="@{/transactions}" method="post">
+    <label for="bookId">Book ID:</label>
+    <input type="text" id="bookId" name="bookId" required>
+    <br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" required>
+    <br>
+    <button type="submit">Add Transaction</button>
+</form>
+
+<h2>Transaction History</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Transaction ID</th>
+        <th>Book ID</th>
+        <th>Quantity</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.id}">Transaction ID</td>
+        <td th:text="${transaction.bookId}">Book ID</td>
+        <td th:text="${transaction.quantity}">Quantity</td>
+        <td th:text="${transaction.date}">Date</td>
+        <td>
+            <form th:action="@{/transactions/delete/{id}(id=${transaction.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
