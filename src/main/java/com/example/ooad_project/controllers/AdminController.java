@@ -33,6 +33,8 @@ public class AdminController {
         return null;
     }
 
+
+
     @DeleteMapping("/{id}")
     public void deleteAdmin(@PathVariable int id) {
         adminRepository.deleteById(id);

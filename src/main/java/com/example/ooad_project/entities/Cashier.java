@@ -51,16 +51,16 @@ public class Cashier extends AppUser {
 
     @Override
     boolean login(String username, String password) {
-        // Implement login logic
+        // check this later
         return false;
     }
 
     @Override
     void logout() {
-        // Implement logout logic
+         // check this later
     }
 
     public int scanBook(int id) {
-        return id;  // Implement book scanning logic here
+        return id;  // check this later
     }
 }
