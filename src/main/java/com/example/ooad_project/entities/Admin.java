@@ -60,15 +60,15 @@ public class Admin extends AppUser {
 
     @Override
     void logout() {
-        // implement admin-specific logout logic here
+        // check this later
     }
 
     // Admin-specific methods
     public void addUser(AppUser user) {
-        // implement logic to add a user
+        // check this later
     }
 
     public void removeUser(AppUser user) {
-        // implement logic to remove a user
+        // check this later
     }
 }
