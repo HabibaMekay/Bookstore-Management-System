@@ -14,21 +14,21 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody User user) {
-        return (User) userRepository.save(user);
+        return userRepository.save(user);
     }
 
     @GetMapping("/{id}")
     public User getUserById(@PathVariable int id) {
-        return (User) userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
     public User updateUser(@PathVariable int id, @RequestBody User userDetails) {
-        User user = (User) userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElse(null);
         if (user != null) {
             user.setUsername(userDetails.getUsername());
             user.setPassword(userDetails.getPassword());
-            return (User) userRepository.save(user);
+            return userRepository.save(user);
         }
         return null;
     }
@@ -36,5 +36,16 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
+    }
+
+    // Login functionality
+    @PostMapping("/login")
+    public String login(@RequestBody User loginDetails) {
+        User user = userRepository.findByUsername(loginDetails.getUsername());
+        if (user != null && user.getPassword().equals(loginDetails.getPassword())) {
+            return "Login successful! Welcome, " + user.getUsername();
+        } else {
+            return "Invalid username or password.";
+        }
     }
 }
