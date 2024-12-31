@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-book-button {
+    background-color: #f0f0ff;
+    border: 1px solid #8888ff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #5555ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.search {
+    border: 1px solid #8888ff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 200px;
+}
+
+main h1 {
+    text-align: center;
+    color: #333;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    background-color: #f0f0ff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.book-card p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5555ff;
+}
+
+.actions {
+    margin-top: 15px;
+}
+
+.edit-button, .delete-button {
+    border: 1px solid #8888ff;
+    background-color: #ffffff;
+    color: #5555ff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #f0f0ff;
+}
