@@ -1,0 +1,16 @@
+@startuml
+[*] --> HomeScreen
+
+HomeScreen --> AddingBookState : AddBookButtonPressed
+AddingBookState --> HomeScreen : AddButtonPressed\n(Successful Save)
+AddingBookState --> HomeScreen : CancelButtonPressed
+
+HomeScreen --> EditingBookState : EditBookButtonPressed
+EditingBookState --> HomeScreen : SaveButtonPressed\n(Successful Save)
+EditingBookState --> HomeScreen : CancelButtonPressed
+
+HomeScreen --> HomeScreen : SearchBarUsed
+HomeScreen --> HomeScreen : DeleteBookButtonPressed\n(Refresh Data)
+
+
+@enduml
