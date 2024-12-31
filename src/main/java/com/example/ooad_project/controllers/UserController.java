@@ -37,4 +37,15 @@ public class UserController {
     public void deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
     }
+
+    // Login functionality
+    @PostMapping("/login")
+    public String login(@RequestBody User loginDetails) {
+        User user = userRepository.findByUsername(loginDetails.getUsername());
+        if (user != null && user.getPassword().equals(loginDetails.getPassword())) {
+            return "Login successful! Welcome, " + user.getUsername();
+        } else {
+            return "Invalid username or password.";
+        }
+    }
 }
