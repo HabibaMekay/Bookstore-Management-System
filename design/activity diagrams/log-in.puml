@@ -1,0 +1,11 @@
+@startuml
+start
+:Display Login Screen;
+:User Enters Credentials;
+if (Login Successful?) then (yes)
+  :Redirect to Home Screen;
+else (no)
+  :Display Login Failed Message;
+endif
+stop
+@enduml

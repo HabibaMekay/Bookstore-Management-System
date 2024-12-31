@@ -1,0 +1,30 @@
+@startuml
+start
+:Display Home Screen;
+:User Interacts with Home Screen;
+if (Add Book Button Pressed?) then (yes)
+  :Navigate to Add Book Screen;
+  :User Enters Book Details;
+  :User Saves Book;
+  :Return to Home Screen;
+else (no)
+  if (Edit Book Button Pressed?) then (yes)
+    :Navigate to Edit Book Screen;
+    :User Edits Book Details;
+    :User Saves Changes;
+    :Return to Home Screen;
+  else (no)
+    if (Delete Book Button Pressed?) then (yes)
+      :Delete Book;
+      :Refresh Data;
+      :Return to Home Screen;
+    else (no)
+      if (Search Bar Used?) then (yes)
+        :Perform Search;
+        :Display Search Results;
+      endif
+    endif
+  endif
+endif
+stop
+@enduml

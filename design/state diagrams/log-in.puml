@@ -1,0 +1,9 @@
+@startuml
+skinparam direction left to right
+
+[*] --> LoginScreen : Start
+
+LoginScreen --> HomeScreen : LoginButtonPressed\n(Successful Login)
+LoginScreen --> LoginScreen : LoginFailed
+
+@enduml
