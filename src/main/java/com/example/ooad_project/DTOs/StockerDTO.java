@@ -13,7 +13,7 @@ public class StockerDTO {
         this.role = role;
     }
 
-    // Getters and Setters
+
     public int getId() {
         return id;
     }

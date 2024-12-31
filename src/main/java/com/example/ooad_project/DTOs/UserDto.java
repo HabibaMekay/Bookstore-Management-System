@@ -5,7 +5,7 @@ public class UserDto {
     private String username;
     private String role;
 
-    // Constructors
+
     public UserDto() {}
 
     public UserDto(int id, String username, String role) {
@@ -14,7 +14,7 @@ public class UserDto {
         this.role = role;
     }
 
-    // Getters and setters
+
     public int getId() {
         return id;
     }
