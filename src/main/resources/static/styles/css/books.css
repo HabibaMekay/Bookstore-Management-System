@@ -18,43 +18,40 @@ header {
     margin-bottom: 20px;
 }
 
-.add-book {
-    background-color: #6c63ff;
-    color: white;
+.add-book-button {
+    background-color: #f0f0ff;
+    border: 1px solid #8888ff;
+    border-radius: 8px;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    color: #5555ff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .search {
+    border: 1px solid #8888ff;
+    border-radius: 8px;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
     width: 200px;
 }
 
-h1 {
+main h1 {
     text-align: center;
-    margin-bottom: 30px;
     color: #333;
 }
 
 .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
 .book-card {
-    background-color: #ffffff;
-    padding: 15px;
-    border: 1px solid #ddd;
+    background-color: #f0f0ff;
     border-radius: 10px;
-    text-align: center;
+    padding: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .book-card h2 {
@@ -65,33 +62,30 @@ h1 {
 
 .book-card p {
     margin: 5px 0;
-    color: #555;
+    color: #666;
 }
 
-.book-card .price {
-    font-size: 20px;
+.price {
+    font-size: 16px;
     font-weight: bold;
-    color: #6c63ff;
-    margin-bottom: 15px;
+    color: #5555ff;
 }
 
 .actions {
-    display: flex;
-    justify-content: space-between;
+    margin-top: 15px;
 }
 
-.actions .edit,
-.actions .delete {
-    background-color: #fff;
-    color: #6c63ff;
-    border: 1px solid #6c63ff;
-    padding: 5px 10px;
+.edit-button, .delete-button {
+    border: 1px solid #8888ff;
+    background-color: #ffffff;
+    color: #5555ff;
+    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    margin: 0 5px;
 }
 
-.actions .delete {
-    color: #ff6363;
-    border-color: #ff6363;
+.edit-button:hover, .delete-button:hover {
+    background-color: #f0f0ff;
 }

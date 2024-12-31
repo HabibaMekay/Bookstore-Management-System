@@ -1,69 +1,40 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>Books</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Books</h1>-->
-<!--<a href="/books/new">Add New Book</a>-->
-<!--<table>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Title</th>-->
-<!--        <th>Genre</th>-->
-<!--        <th>Stock</th>-->
-<!--        <th>Price</th>-->
-<!--        <th>Actions</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr th:each="book : ${books}">-->
-<!--        <td th:text="${book.title}"></td>-->
-<!--        <td th:text="${book.genre}"></td>-->
-<!--        <td th:text="${book.currentStock}"></td>-->
-<!--        <td th:text="${book.price}"></td>-->
-<!--        <td>-->
-<!--            <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a>-->
-<!--            <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<!--</body>-->
-<!--</html>-->
-
-
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Books</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocker Page</title>
+    <link rel="stylesheet" th:href="@{/styles/css/books.css}">
 </head>
 <body>
-<h1>Books</h1>
-<a th:href="@{/books/new}">Add New Book</a>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Genre</th>
-        <th>Stock</th>
-        <th>Price</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="book : ${books}">
-        <td th:text="${book.title}"></td>
-        <td th:text="${book.genre}"></td>
-        <td th:text="${book.currentStock}"></td>
-        <td th:text="${book.price} + 'LE'"></td>
-        <td>
-            <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a>
-            <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <header>
+        <a th:href="@{/books/new}" class="add-book-button">Add Book</a>
+        <input type="text" class="search" placeholder="Search">
+    </header>
+    <main>
+        <h1>Hello stocker :)</h1>
+        <div class="book-grid">
+            <!-- Loop through the books using Thymeleaf -->
+            <div class="book-card" th:each="book : ${books}">
+                <h2 th:text="${book.title}">Book Title</h2>
+                <p>Genre: <span th:text="${book.genre}">Genre</span></p>
+                <p>Stock: <span th:text="${book.currentStock}">Stock</span></p>
+                <p class="price" th:text="${book.price} + ' $'">Price</p>
+                <div class="actions">
+                    <!-- Buttons for Edit and Delete -->
+                    <button class="edit-button"
+                            th:onclick="'window.location.href=\'/books/edit/' + ${book.id} + '\''">
+                        Edit
+                    </button>
+                    <button class="delete-button"
+                            th:onclick="'window.location.href=\'/books/delete/' + ${book.id} + '\''">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>
