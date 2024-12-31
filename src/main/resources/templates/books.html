@@ -15,7 +15,6 @@
     <main>
         <h1>Hello stocker :)</h1>
         <div class="book-grid">
-            <!-- Loop through the books using Thymeleaf -->
             <div class="book-card" th:each="book : ${books}">
                 <h2 th:text="${book.title}">Book Title</h2>
                 <p>Genre: <span th:text="${book.genre}">Genre</span></p>

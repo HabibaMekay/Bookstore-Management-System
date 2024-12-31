@@ -31,7 +31,7 @@ public class UserController {
     @PostMapping
     public String createUser(@ModelAttribute AppUser user, Model model) {
         userRepository.save(user);
-        return "redirect:/login"; // Redirect to login page after user is created
+        return "redirect:/login";
     }
 
     // Get user by ID (used for admin pages or other actions)
@@ -39,7 +39,7 @@ public class UserController {
     public String getUserById(@PathVariable int id, Model model) {
         AppUser user = userRepository.findById(id).orElse(null);
         model.addAttribute("user", user);
-        return "userDetails"; // Return a page showing user details
+        return "userDetails";   //not implemented
     }
 
     // Update user information
@@ -51,15 +51,15 @@ public class UserController {
             user.setPassword(userDetails.getPassword());
             userRepository.save(user);
             model.addAttribute("user", user);
-            return "userDetails"; // Return updated user details page
+            return "userDetails";
         }
-        return "error"; // Return error page if user not found
+        return "error"; // not implemented
     }
 
     // Delete user by ID
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable int id) {
         userRepository.deleteById(id);
-        return "redirect:/login"; // Redirect to login page after user is deleted
+        return "redirect:/login";
     }
 }

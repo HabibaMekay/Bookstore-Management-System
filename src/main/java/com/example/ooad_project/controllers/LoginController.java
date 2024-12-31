@@ -20,13 +20,11 @@ public class LoginController {
     @Autowired
     private UserRepository userRepository;
 
-    // GET mapping for the login page (HTML form)
     @GetMapping
     public String loginPage(Model model) {
-        return "login"; // This refers to the login.html template
+        return "login";
     }
 
-    // POST mapping for the login functionality
     @PostMapping
     public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
         AppUser user = userRepository.findByUsername(username);
@@ -37,11 +35,11 @@ public class LoginController {
                 case "stocker":
                     return "redirect:/books";
                 case "cashier":
-                    return "redirect:/login";  // You might want to fix this redirection
+                    return "redirect:/login";  // fix this later when cahsier is added
             }
         }
         model.addAttribute("error", "Invalid username or password.");
-        return "login"; // Re-render the login page with an error message
+        return "login";
     }
 
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED) // or SINGLE_TABLE, depending on your needs
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Transaction {
 
     @Id

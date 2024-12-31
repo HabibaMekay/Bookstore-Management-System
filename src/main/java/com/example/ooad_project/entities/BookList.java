@@ -35,7 +35,7 @@ public class BookList {
 
     public Book searchByName(String bookName) {
         for (Book book : books) {
-            if (bookName.equals(book.getTitle()))  // Using .equals to compare strings
+            if (bookName.equals(book.getTitle()))  // equals() was suggested instead by intellij
                 return book;
         }
         return null;

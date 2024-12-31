@@ -13,7 +13,10 @@ public class Cashier extends AppUser {
 
     }
 
-    // Getters and Setters
+    //////////////////////////////////////////////////////
+    /// /////////////////////////////////////////////////
+    ///
+
     public String getPassword() {
         return super.getPassword();
     }
