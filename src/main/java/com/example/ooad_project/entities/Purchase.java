@@ -15,6 +15,6 @@ public class Purchase extends Transaction {
 
     @Override
     public void process() {
-        // Implement purchase-specific processing
+        // moved to service
     }
 }

@@ -48,12 +48,12 @@ public class Stocker extends AppUser {
 
     @Override
     boolean login(String username, String password) {
-        // Implement login logic
+        // moved in user and login controller
         return false;
     }
 
     @Override
     void logout() {
-        // Implement logout logic
+        // moved in user and login conroller
     }
 }
