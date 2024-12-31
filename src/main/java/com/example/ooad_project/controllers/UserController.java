@@ -2,6 +2,7 @@ package com.example.ooad_project.controllers;
 
 import com.example.ooad_project.entities.User;
 import com.example.ooad_project.repositories.UserRepository;
+import com.example.ooad_project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,8 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
 
     @PostMapping
     public User createUser(@RequestBody User user) {

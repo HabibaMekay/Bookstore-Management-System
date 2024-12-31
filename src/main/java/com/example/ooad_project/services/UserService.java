@@ -22,6 +22,11 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found with id: " + id));
     }
 
+    public boolean loginUser(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        return user != null && user.getPassword().equals(password);
+    }
+
     public void saveUser(User user) {
         userRepository.save(user);
     }
