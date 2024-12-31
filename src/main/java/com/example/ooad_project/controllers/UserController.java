@@ -14,21 +14,21 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+        return (User) userRepository.save(user);
     }
 
     @GetMapping("/{id}")
     public User getUserById(@PathVariable int id) {
-        return userRepository.findById(id).orElse(null);
+        return (User) userRepository.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
     public User updateUser(@PathVariable int id, @RequestBody User userDetails) {
-        User user = userRepository.findById(id).orElse(null);
+        User user = (User) userRepository.findById(id).orElse(null);
         if (user != null) {
             user.setUsername(userDetails.getUsername());
             user.setPassword(userDetails.getPassword());
-            return userRepository.save(user);
+            return (User) userRepository.save(user);
         }
         return null;
     }
