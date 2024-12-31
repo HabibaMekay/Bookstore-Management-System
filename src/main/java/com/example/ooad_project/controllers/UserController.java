@@ -1,6 +1,6 @@
 package com.example.ooad_project.controllers;
 
-import com.example.ooad_project.entities.User;
+import com.example.ooad_project.entities.AppUser;
 import com.example.ooad_project.repositories.UserRepository;
 import com.example.ooad_project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +16,18 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public AppUser createUser(@RequestBody AppUser user) {
         return userRepository.save(user);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id) {
+    public AppUser getUserById(@PathVariable int id) {
         return userRepository.findById(id).orElse(null);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable int id, @RequestBody User userDetails) {
-        User user = userRepository.findById(id).orElse(null);
+    public AppUser updateUser(@PathVariable int id, @RequestBody AppUser userDetails) {
+        AppUser user = userRepository.findById(id).orElse(null);
         if (user != null) {
             user.setUsername(userDetails.getUsername());
             user.setPassword(userDetails.getPassword());
@@ -43,8 +43,8 @@ public class UserController {
 
     // Login functionality
     @PostMapping("/login")
-    public String login(@RequestBody User loginDetails) {
-        User user = userRepository.findByUsername(loginDetails.getUsername());
+    public String login(@RequestBody AppUser loginDetails) {
+        AppUser user = userRepository.findByUsername(loginDetails.getUsername());
         if (user != null && user.getPassword().equals(loginDetails.getPassword())) {
             return "Login successful! Welcome, " + user.getUsername();
         } else {

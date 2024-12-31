@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)  // or @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Admin extends User {
+public class Admin extends AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,11 +64,11 @@ public class Admin extends User {
     }
 
     // Admin-specific methods
-    public void addUser(User user) {
+    public void addUser(AppUser user) {
         // implement logic to add a user
     }
 
-    public void removeUser(User user) {
+    public void removeUser(AppUser user) {
         // implement logic to remove a user
     }
 }

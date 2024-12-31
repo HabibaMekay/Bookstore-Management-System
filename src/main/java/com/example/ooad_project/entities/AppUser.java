@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public abstract class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -12,14 +12,14 @@ public abstract class User {
     private String password;
     private String role;
 
-    public User(String username, String password, String role, int id) {
+    public AppUser(String username, String password, String role, int id) {
         this.username = username;
         this.password = password;
         this.role = role;
         this.id = id;
     }
 
-    public User() {}
+    public AppUser() {}
 
     // Getters and setters
 

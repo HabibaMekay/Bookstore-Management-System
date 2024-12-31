@@ -3,7 +3,7 @@ package com.example.ooad_project.entities;
 import jakarta.persistence.*;
 
 @Entity
-public class Stocker extends User {
+public class Stocker extends AppUser {
 
     public Stocker(String name, String password, int id) {
         super(name, password, "stocker", id);

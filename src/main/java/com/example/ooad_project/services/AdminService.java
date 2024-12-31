@@ -1,7 +1,7 @@
 package com.example.ooad_project.services;
 
 import com.example.ooad_project.entities.Admin;
-import com.example.ooad_project.entities.User;
+import com.example.ooad_project.entities.AppUser;
 import com.example.ooad_project.repositories.AdminRepository;
 import com.example.ooad_project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +35,11 @@ public class AdminService {
         adminRepository.deleteById(id);
     }
 
-    public void addUser(User user) {
+    public void addUser(AppUser user) {
         userRepository.save(user);
     }
 
-    public void removeUser(User user) {
+    public void removeUser(AppUser user) {
         userRepository.deleteById(user.getId());
     }
 
