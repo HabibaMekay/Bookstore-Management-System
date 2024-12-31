@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Users</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Manage Users</h1>
+
+<h2>Add New User</h2>
+<form th:action="@{/users}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br>
+    <label for="role">Role:</label>
+    <select id="role" name="role" required>
+        <option value="admin">Admin</option>
+        <option value="cashier">Cashier</option>
+        <option value="stocker">Stocker</option>
+    </select>
+    <br>
+    <button type="submit">Add User</button>
+</form>
+
+<h2>User List</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">ID</td>
+        <td th:text="${user.username}">Username</td>
+        <td th:text="${user.role}">Role</td>
+        <td>
+            <form th:action="@{/users/update/{id}(id=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="put">
+                <button type="submit">Update</button>
+            </form>
+            <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
